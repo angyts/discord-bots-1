@@ -79,7 +79,10 @@ module.exports = class POAPEventSetup extends SlashCommand {
 		this.filePath = __filename;
 	}
 
-	async run(ctx) {
+	async run(ctx: CommandContext) {
+		if (ctx.user.bot) return;
+		let command: Promise<any>;
+
 		
 	}
 };
