@@ -6,7 +6,7 @@ import { Guild, GuildMember } from 'discord.js';
 import client from '../app';
 
 const ServiceUtils = {
-	async getGuildAndMember(ctx: CommandContext): Promise<{ guild: Guild, guildMember: GuildMember }> {
+	async getGuildAndMember(ctx: CommandContext): Promise<{ guild: Guild, guildMember: GuildMember, }> {
 		const guild = await client.guilds.fetch(ctx.guildID);
 		return {
 			guild: guild,
