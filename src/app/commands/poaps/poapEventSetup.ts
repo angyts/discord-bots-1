@@ -1,4 +1,5 @@
 import { SlashCommand, CommandOptionType, ApplicationCommandPermissionType, CommandContext } from 'slash-create';
+import setup from '../../service/poap/setup';
 import { Message } from 'discord.js';
 
 module.exports = class POAPEventSetup extends SlashCommand {
@@ -82,7 +83,14 @@ module.exports = class POAPEventSetup extends SlashCommand {
 	async run(ctx: CommandContext) {
 		if (ctx.user.bot) return;
 		let command: Promise<any>;
+		command = setup(ctx);
 
-		
+		this.handleCommandError(ctx, command);
+	}
+
+	handleCommandError(ctx: CommandContext, command: Promise<any>) {
+		command.catch(e => {
+			console.error('ERROR', e);
+		});
 	}
 };
